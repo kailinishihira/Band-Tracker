@@ -116,6 +116,31 @@ namespace BandTracker.Controllers
       return View("VenueDetails", model);
     }
 
+    [HttpGet("/venues/{id}/delete")]
+    public ActionResult DeleteVenue(int id)
+    {
+      Venue thisVenue = Venue.Find(id);
+      thisVenue.Delete();
+      List<Venue> allVenues = Venue.GetAll();
+      return View("Venues", allVenues);
+    }
+
+    [HttpGet("/venues/{id}/delete/{id2}")]
+    public ActionResult DeleteBandFromVenue(int id, int id2)
+    {
+      Venue thisVenue = Venue.Find(id);
+      Band thisBand = Band.Find(id2);
+      thisVenue.DeleteBandFromVenue(thisBand);
+      List<Band> venueBands = thisVenue.GetBands();
+      List<Band> allBands = Band.GetAll();
+
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      model.Add("thisVenue", thisVenue);
+      model.Add("venueBands", venueBands);
+      model.Add("allBands", allBands);
+      return View("VenueDetails", model);
+    }
+
 //Bands
 
     [HttpGet("/bands/all")]

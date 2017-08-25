@@ -6,18 +6,22 @@
 
 <h1>Band Tracker</h1>
 
-<h2>Venues</h2>
-
-<h3>Add New Venue</h3>
-<form action="/venues/all/add" method="post">
-  <label for="venue-name">Venue name: </label>
-  <input type="text" id="venue-name" name="venue-name">
-  <label for="venue-city">Venue city: </label>
-  <input type="text" id="venue-city" name="venue-city">
-  <button type="submit" class="btn btn-default">Add venue</button>
-</form>
-
-@foreach (var venue in Model)
-{
-  <li><a href="/venues/@venue.GetId()/details">@venue.GetName()</a></li>
-}
+<div class="row">
+  <div class="col-md-6">
+    <h2>Venues</h2>
+    @foreach (var venue in Model)
+    {
+      <li><a href="/venues/@venue.GetId()/details">@venue.GetName()</a></li>
+    }
+  </div>
+  <div class="col-md-6">
+    <h2>Add New Venue</h2>
+    <form action="/venues/all/add" method="post">
+      <label for="venue-name">Venue name: </label>
+      <input type="text" id="venue-name" name="venue-name">
+      <label for="venue-city">Venue city: </label>
+      <input type="text" id="venue-city" name="venue-city">
+      <button type="submit" class="btn btn-default">Add venue</button>
+    </form>
+  </div>
+</div>
