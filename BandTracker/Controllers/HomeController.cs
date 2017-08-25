@@ -26,7 +26,12 @@ namespace BandTracker.Controllers
     [HttpPost("/venues/all/add")]
     public ActionResult AddVenue()
     {
-      Venue newVenue = new Venue(Request.Form["venue-name"], Request.Form["venue-city"]);
+      string name = Request.Form["venue-name"];
+      string city = Request.Form["venue-city"];
+      string nameUpper = char.ToUpper(name[0]) + name.Substring(1);
+      string cityUpper = char.ToUpper(city[0]) + city.Substring(1);
+
+      Venue newVenue = new Venue(nameUpper, cityUpper);
       newVenue.Save();
       List<Venue> allVenues = Venue.GetAll();
       return View("Venues", allVenues);
@@ -153,7 +158,10 @@ namespace BandTracker.Controllers
     [HttpPost("/bands/all/add")]
     public ActionResult AddBand()
     {
-      Band newBand = new Band(Request.Form["band-name"]);
+      string name = Request.Form["band-name"];
+      string nameUpper = char.ToUpper(name[0]) + name.Substring(1);
+
+      Band newBand = new Band(nameUpper);
       newBand.Save();
       List<Band> allBands = Band.GetAll();
       return View("Bands", allBands);
@@ -235,6 +243,22 @@ namespace BandTracker.Controllers
       thisBand.Delete();
       List<Band> allBands = Band.GetAll();
       return View("Bands", allBands);
+    }
+
+    [HttpGet("/bands/{id}/delete/{id2}")]
+    public ActionResult DeleteVenueFromBand(int id, int id2)
+    {
+      Band thisBand = Band.Find(id);
+      Venue thisVenue = Venue.Find(id2);
+      thisBand.DeleteVenueFromBand(thisVenue);
+      List<Venue> bandVenues = thisBand.GetVenues();
+      List<Venue> allVenues = Venue.GetAll();
+
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      model.Add("thisBand", thisBand);
+      model.Add("bandVenues", bandVenues);
+      model.Add("allVenues", allVenues);
+      return View("BandDetails", model);
     }
 
   }
