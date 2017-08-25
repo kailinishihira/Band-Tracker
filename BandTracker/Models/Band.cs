@@ -65,10 +65,6 @@ namespace BandTracker.Models
        bandList.Add(newBand);
      }
      conn.Close();
-     if (conn != null)
-     {
-       conn.Dispose();
-     }
      return bandList;
     }
 

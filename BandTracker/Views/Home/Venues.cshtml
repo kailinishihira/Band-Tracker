@@ -19,5 +19,5 @@
 
 @foreach (var venue in Model)
 {
-  <li>@venue.GetName()</li>
+  <li><a href="/venues/@venue.GetId()/details">@venue.GetName()</a></li>
 }
