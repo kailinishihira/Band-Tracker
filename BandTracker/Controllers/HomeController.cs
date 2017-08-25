@@ -205,5 +205,37 @@ namespace BandTracker.Controllers
       model.Add("allVenues", allVenues);
       return View("BandDetails", model);
     }
+
+    [HttpGet("/bands/{id}/edit")]
+    public ActionResult BandEdit(int id)
+    {
+      Band thisBand = Band.Find(id);
+      return View(thisBand);
+    }
+
+    [HttpPost("/bands/{id}/edit-name/details")]
+    public ActionResult EditBandName(int id)
+    {
+      Band thisBand = Band.Find(id);
+      thisBand.UpdateName(Request.Form["band-name"]);
+      List<Venue> bandVenues = thisBand.GetVenues();
+      List<Venue> allVenues = Venue.GetAll();
+
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      model.Add("thisBand", thisBand);
+      model.Add("bandVenues", bandVenues);
+      model.Add("allVenues", allVenues);
+      return View("BandDetails", model);
+    }
+
+    [HttpGet("/bands/{id}/delete")]
+    public ActionResult DeleteBand(int id)
+    {
+      Band thisBand = Band.Find(id);
+      thisBand.Delete();
+      List<Band> allBands = Band.GetAll();
+      return View("Bands", allBands);
+    }
+
   }
 }

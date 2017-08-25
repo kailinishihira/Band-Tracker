@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+
+<a href="/">Home</a>
+
+<h1>Band Tracker</h1>
+
+<h3>Edit @Model.GetName()</h3>
+
+<form action="/bands/@Model.GetId()/edit-name/details" method="post">
+  <label for="band-name">Band name: </label>
+  <input type="text" id="band-name" name="band-name">
+  <button type="submit" class="btn btn-default">Update</button>
+</form>
