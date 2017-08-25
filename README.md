@@ -1,6 +1,6 @@
 # _Band Tracker_
 
-#### _A web app to track bands and the venues where they've played concerts, 08.25.17_
+#### _A web app to track bands and the venues where they've performed, 08.25.17_
 
 #### By _**Kaili Nishihira**_
 
@@ -10,15 +10,21 @@ _A web app which will enable the user to enter venues and bands. The user may vi
 
 || Behavior  | Input  | Output  |
 |---|---|---|---|
-|| User may enter a new band <li>Click `Add band` on Index view</li> <li>View returns a form to enter the band's information| Enter a new band: <br> Band Name: 'The Beatles' <br> Click `Add band`| All Bands: <br> ... <br> The Beatles <br> ... |
-|| User may view a list of all bands   | Click `View all bands`  | All Bands: <li>Rilo Kiley</li> <li>The Beatles</li>  |
+|| User may view a list of all bands   | Click `All bands`  | All Bands: <li>Rilo Kiley</li> <li>The Beatles</li>  |
+|| User may enter a new band <li>Form to enter the band's information in 'Bands' view</li> | Enter a new band: <br> Band Name: 'The Beatles' <br> Click `Add`| All Bands: <br> ... <br> The Beatles <br> ... |
 || User may view a band's details  | Click 'The Beatle'  | The Beatles <br> Venues Played: <br>  |
-|| User may view a list of all venues  | Click `View all venues`  | All Venues: <li>Red Rocks Amphitheatre</li> <li>Waikiki Shell</li>  |
-|| User may enter a new venue <li>Click `Add venue` on Index view</li> <li>View returns a form to enter the venue's information| Enter a new venue: <br> Venue Name: 'Red Rocks Amphitheatre' <br> City: 'Morrison, CO' Click `Add venue`| All Venues: <br> ... <br> Red Rocks Amphitheatre <br> ... |
-|| User may add a new venue to a specific band <li>In bands's details view, click `Add venue`</li> <li>View returns a form to enter the venue's information</li>  | Enter a new venue for The Beatles: <br> Venue Name: 'Waikiki Shell' <br> City: 'Honolulu, HI' | The Beatles <br> Venues Played: <br> ... <br> Waikiki Shell <br> ... |
-|| User may view a venues's details  | Click on 'Waikiki Shell'  | Waikiki Shell <br> Honolulu, HI <br> Hosted Bands: <br> ... <br> The Beatles <br> ...   |
-|| User may update a venue's information <li>Click on venue's name</li> <li>View returns the venue's details</li> <li>Click `Update venue`</li><li>View returns a form to update the venue's information</li>  | Update details for waikiki shell: <br> Venue Name: 'Waikiki Shell' <br> Click `update` </li> | Waikiki Shell |
-|| User may delete a venue <li>Click on venue's name</li> <li>View returns the venue's details</li>  | Click `Delete venue`  | Confirmation page: 'Venue has been deleted'  |
+|| User may view a list of all venues  | Click `All venues`  | All Venues: <li>Red Rocks Amphitheatre</li> <li>Waikiki Shell</li>  |
+|| User may enter a new venue <li>Form to enter the venue's information in "Venues" view</li> | Venue Name: 'Red Rocks Amphitheatre' <br> City: 'Morrison' <br> Click `Add`| All Venues: <br> ... <br> Red Rocks Amphitheatre <br> ... |
+|| User may add a new venue to a specific band <br> Drop down menu to add previously entered bands <br> Form will be in 'Band Details' view to add new Venue  | Enter a new venue for The Beatles: <br> Venue Name: 'Waikiki Shell' <br> City: 'Honolulu, HI' | The Beatles <br> Venues Played: <br> ... <br> Waikiki Shell <br> ... |
+|| User may view a venues's details  | Click on 'Waikiki Shell'  | Waikiki Shell <br> Honolulu <br> Hosted Bands: <br> ... <br> The Beatles <br> ...   |
+|| User may update a venue's information <li>Click on venue's name</li> <li>View returns the venue's details</li> <li>Click `edit`</li><li>View returns a form to update the venue's information</li>  | Update details for waikiki shell: <br> Venue Name: 'Waikiki Shell' <br> Click `update` </li> | Waikiki Shell |
+|| User may update a band's name <li>Click on band's name</li> <li>View returns the band's details</li> <li>Click `edit`</li><li>View returns a form to update the band's name</li>  | Update details for The beatles: <br> Band Name: 'The Beatles <br> Click `update` </li> | The Beatles |
+|| User may delete a venue <li>Click on venue's name</li> <li>View returns the venue's details</li>  | Click `delete`  | View returns to 'Venues' and deleted venue is no longer in the list  |
+|| User may delete a band <li>Click on band's name</li> <li>View returns the band's details</li>  | Click `delete`  | View returns to 'Bands' and deleted band is no longer in the list  |
+|| User may delete a band from a venue <li>Click on venue's name</li> <li>View returns the venue's details with a list of bands the venue has hosted</li> | Click `x` next to the band's name in the 'Bands Hosted' list| View returns the venue's details without the selected band in the 'Bands Hosted' list |
+|| User may delete a venue from a band <li>Click on band's name</li> <li>View returns the band's details with a list of venues played</li> | Click `x` next to the venue's name in the 'Venues Played' list | View returns the band's details without the selected venue in the 'Venues Played' list |
+
+
 
 
 ## Setup/Installation Requirements

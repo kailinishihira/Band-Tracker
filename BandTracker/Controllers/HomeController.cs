@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System;
 using BandTracker.Models;
 
-
 namespace BandTracker.Controllers
 {
   public class HomeController : Controller
