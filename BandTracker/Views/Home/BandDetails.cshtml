@@ -2,13 +2,12 @@
   Layout = "_Layout";
 }
 
-<a href="/">Home</a>
+<a href="/"> <span class="glyphicon glyphicon-home home" aria-hidden="true"></span> </a>
 
 <h1>Band Tracker</h1>
 
 <h2>@Model["thisBand"].GetName()</h2>
-<a href="/bands/@Model["thisBand"].GetId()/edit">Edit</a>
-<a href="/bands/@Model["thisBand"].GetId()/delete">Delete</a>
+<p class="edit-delete"><a href="/bands/@Model["thisBand"].GetId()/edit" class="edit-delete-links">Edit</a> | <a href="/bands/@Model["thisBand"].GetId()/delete" class="edit-delete-links">Delete</a></p>
 
 <div class="row">
   <div class="col-md-1">
@@ -18,7 +17,9 @@
     <div class="well">
       @foreach(var venue in @Model["bandVenues"])
       {
-        <li><a href="/venues/@venue.GetId()/details">@venue.GetName()</a> <a href="/bands/@Model["thisBand"].GetId()/delete/@venue.GetId()"> x </a></li>
+        <ul>
+          <li><a href="/venues/@venue.GetId()/details">@venue.GetName()</a> <a href="/bands/@Model["thisBand"].GetId()/delete/@venue.GetId()"> <span class="glyphicon glyphicon-remove-sign x-link" aria-hidden="true"></span> </a></li>
+        </ul>
       }
     </div>
   </div>

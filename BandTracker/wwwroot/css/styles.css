@@ -25,3 +25,26 @@ h3 {
   padding: 20px 30px 20px 30px;
   margin-top: 4%;
 }
+
+.edit-delete {
+  text-align: center;
+}
+
+.edit-delete-links {
+  color: #000000;
+}
+
+.edit-delete-links:hover {
+  color: #000000;
+}
+
+.x-link {
+  color: red;
+}
+
+ul {
+  list-style-type: none;
+}
+.home {
+  color: #000000;
+}
