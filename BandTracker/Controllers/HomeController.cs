@@ -87,10 +87,25 @@ namespace BandTracker.Controllers
     }
 
     [HttpPost("/venues/{id}/edit-name/details")]
-    public ActionResult EditedVenue(int id)
+    public ActionResult EditVenueName(int id)
     {
       Venue thisVenue = Venue.Find(id);
       thisVenue.UpdateName(Request.Form["venue-name"]);
+      List<Band> venueBands = thisVenue.GetBands();
+      List<Band> allBands = Band.GetAll();
+
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      model.Add("thisVenue", thisVenue);
+      model.Add("venueBands", venueBands);
+      model.Add("allBands", allBands);
+      return View("VenueDetails", model);
+    }
+
+    [HttpPost("/venues/{id}/edit-city/details")]
+    public ActionResult EditVenueCity(int id)
+    {
+      Venue thisVenue = Venue.Find(id);
+      thisVenue.UpdateCity(Request.Form["venue-city"]);
       List<Band> venueBands = thisVenue.GetBands();
       List<Band> allBands = Band.GetAll();
 
