@@ -10,171 +10,159 @@ namespace BandTracker.Tests
   {
     public VenueTests()
     {
-        DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=3306;database=band_tracker_test;";
+      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=3306;database=band_tracker_test;";
     }
-  // 
-  //   public void Dispose()
-  //   {
-  //     Recipe.DeleteAll();
-  //     Category.DeleteAll();
-  //   }
-  //
-  //   [TestMethod]
-  //   public void GetAll_CategoriesEmptyAtFirst_0()
-  //   {
-  //     //Arrange, Act
-  //     int result = Category.GetAll().Count;
-  //
-  //     //Assert
-  //     Assert.AreEqual(0, result);
-  //   }
-  //
-  //   [TestMethod]
-  //   public void Equals_ReturnsTrueForSameName_True()
-  //   {
-  //     //Arrange, Act
-  //     Category firstCategory = new Category("Dessert");
-  //     Category secondCategory = new Category("Dessert");
-  //
-  //     //Assert
-  //     Assert.AreEqual(firstCategory, secondCategory);
-  //   }
-  //
-  // [TestMethod]
-  //   public void Save_DatabaseAssignsIdToCategory_Id()
-  //   {
-  //     //Arrange
-  //     Category testCategory = new Category("Dessert");
-  //     testCategory.Save();
-  //
-  //     //Act
-  //     Category savedCategory = Category.GetAll()[0];
-  //
-  //     int result = savedCategory.GetId();
-  //     int testId = testCategory.GetId();
-  //
-  //     //Assert
-  //     Assert.AreEqual(testId, result);
-  //   }
-  //
-  //   [TestMethod]
-  //   public void Save_SavesCategoryToDatabase_CategoryList()
-  //   {
-  //     //Arrange
-  //     Category testCategory = new Category("Dessert");
-  //     testCategory.Save();
-  //
-  //     //Act
-  //     List<Category> result = Category.GetAll();
-  //     List<Category> testList = new List<Category>{testCategory};
-  //
-  //     //Assert
-  //     CollectionAssert.AreEqual(testList, result);
-  //   }
-  //
-  //   [TestMethod]
-  //   public void Find_FindsCategoryInDatabase_Category()
-  //   {
-  //     //Arrange
-  //     Category testCategory = new Category("Dessert");
-  //     testCategory.Save();
-  //
-  //     //Act
-  //     Category foundCategory = Category.Find(testCategory.GetId());
-  //
-  //     //Assert
-  //     Assert.AreEqual(testCategory, foundCategory);
-  //   }
-  //
-  //   [TestMethod]
-  //   public void Delete_DeletesCategoryFromDatabase_CategoryList()
-  //   {
-  //     //Arrange
-  //     string name1 = "Dessert";
-  //     Category testCategory1 = new Category(name1);
-  //     testCategory1.Save();
-  //
-  //     string name2 = "Snacks";
-  //     Category testCategory2 = new Category(name2);
-  //     testCategory2.Save();
-  //
-  //     //Act
-  //     testCategory1.Delete();
-  //     List<Category> resultCategories = Category.GetAll();
-  //     List<Category> testCategoryList = new List<Category> {testCategory2};
-  //
-  //     //Assert
-  //     CollectionAssert.AreEqual(testCategoryList, resultCategories);
-  //   }
-  //
-  //   [TestMethod]
-  //   public void AddRecipeToCategoryJoinTable_AddsRecipeToJoinTable_RecipeList()
-  //   {
-  //     //Arrange
-  //     Category testCategory = new Category("Dessert");
-  //     testCategory.Save();
-  //
-  //     Recipe testRecipe = new Recipe("Chocolate Chip Cookies", "Melt butter, mix with sugar, eggs, flour, salt, baking soda, chocolate chips. Bake for 10 minutes");
-  //     testRecipe.Save();
-  //
-  //     Recipe testRecipe2 = new Recipe("Ceviche", "Put the tilapia in a medium bowl. Pour the lime juice over the fish and mix gently to combine.");
-  //     testRecipe2.Save();
-  //
-  //     //Act
-  //     testCategory.AddRecipeToCategoryJoinTable(testRecipe);
-  //     testCategory.AddRecipeToCategoryJoinTable(testRecipe2);
-  //
-  //     List<Recipe> result = testCategory.GetRecipes();
-  //     List<Recipe> testList = new List<Recipe>{testRecipe, testRecipe2};
-  //
-  //     //Assert
-  //     CollectionAssert.AreEqual(testList, result);
-  //   }
-  //
-  //   [TestMethod]
-  //   public void GetRecipes_ReturnsAllRecipesForCategory_RecipeList()
-  //   {
-  //     //Arrange
-  //     Category testCategory = new Category("Dessert");
-  //     testCategory.Save();
-  //
-  //     Recipe testRecipe1 = new Recipe("Chocolate Chip Cookies", "Melt butter, mix with sugar, eggs, flour, salt, baking soda, chocolate chips. Bake for 10 minutes", 5);
-  //     testRecipe1.Save();
-  //
-  //     Recipe testRecipe2 = new Recipe("Ceviche", "Put the tilapia in a medium bowl. Pour the lime juice over the fish and mix gently to combine.", 5);
-  //     testRecipe2.Save();
-  //
-  //     //Act
-  //     testCategory.AddRecipeToCategoryJoinTable(testRecipe1);
-  //     testCategory.AddRecipeToCategoryJoinTable(testRecipe2);
-  //
-  //     List<Recipe> savedRecipes = testCategory.GetRecipes();
-  //     List<Recipe> testList = new List<Recipe> {testRecipe1, testRecipe2};
-  //
-  //     //Assert
-  //     CollectionAssert.AreEqual(testList, savedRecipes);
-  //   }
-  //
-  //   [TestMethod]
-  //   public void Delete_DeletesCategoryFromCategoriesAndJointTable_CategoryList()
-  //   {
-  //     //Arrange
-  //     Recipe testRecipe = new Recipe("Chocolate Chip Cookies", "Melt butter, mix with sugar, eggs, flour, salt, baking soda, chocolate chips. Bake for 10 minutes", 5);
-  //     testRecipe.Save();
-  //
-  //     Category testCategory = new Category("Dessert");
-  //     testCategory.Save();
-  //
-  //     //Act
-  //     testCategory.AddRecipeToCategoryJoinTable(testRecipe);
-  //     testCategory.Delete();
-  //
-  //     List<Category> resultRecipeCategories = testRecipe.GetCategories();
-  //     List<Category> testRecipeCategories = new List<Category> {};
-  //
-  //     //Assert
-  //     CollectionAssert.AreEqual(testRecipeCategories, resultRecipeCategories);
-  //   }
+
+    public void Dispose()
+    {
+      Band.DeleteAll();
+      Venue.DeleteAll();
+    }
+
+    [TestMethod]
+    public void Equals_ReturnsTrueForSameName_True()
+    {
+      Venue firstVenue = new Venue("Waikiki Shell", "Honolulu");
+      Venue secondVenue = new Venue("Waikiki Shell", "Honolulu");
+      Assert.AreEqual(firstVenue, secondVenue);
+    }
+
+    [TestMethod]
+    public void GetAll_VenuesEmptyAtFirst_0()
+    {
+      int result = Venue.GetAll().Count;
+      Assert.AreEqual(0, result);
+    }
+
+    [TestMethod]
+    public void Save_DatabaseAssignsIdToVenue_Id()
+    {
+      Venue testVenue = new Venue("Waikiki Shell", "Honolulu");
+      testVenue.Save();
+      Venue savedVenue = Venue.GetAll()[0];
+      int result = savedVenue.GetId();
+      int testId = testVenue.GetId();
+      Assert.AreEqual(testId, result);
+    }
+
+    [TestMethod]
+    public void Save_SavesVenueToDatabase_VenueList()
+    {
+      Venue testVenue = new Venue("Waikiki Shell", "Honolulu");
+      testVenue.Save();
+      List<Venue> result = Venue.GetAll();
+      List<Venue> testList = new List<Venue>{testVenue};
+      CollectionAssert.AreEqual(testList, result);
+    }
+
+    [TestMethod]
+    public void Find_FindsVenueInDatabase_Venue()
+    {
+      Venue testVenue = new Venue("Waikiki Shell", "Honolulu");
+      testVenue.Save();
+      Venue foundVenue = Venue.Find(testVenue.GetId());
+      Assert.AreEqual(testVenue, foundVenue);
+    }
+
+    [TestMethod]
+    public void UpdateName_UpdatesVenueNameInDatabase_String()
+    {
+      string name = "Waikiki Shell";
+      Venue testVenue = new Venue(name, "Honolulu");
+      testVenue.Save();
+      string newName = "Red Rocks Amphitheatre";
+      testVenue.UpdateName(newName);
+      string result = Venue.Find(testVenue.GetId()).GetName();
+      Assert.AreEqual(newName, result);
+    }
+
+    [TestMethod]
+    public void UpdateCity_UpdatesVenueCityInDatabase_String()
+    {
+      string city = "Honolulu";
+      Venue testVenue = new Venue("Waikiki Shell", city);
+      testVenue.Save();
+      string newCity = "Seattle";
+      testVenue.UpdateCity(newCity);
+      string result = Venue.Find(testVenue.GetId()).GetCity();
+      Assert.AreEqual(newCity, result);
+    }
+
+    [TestMethod]
+    public void Delete_DeletesVenueFromDatabase_VenueList()
+    {
+      Venue testVenue1 = new Venue("Waikiki Shell", "Honolulu");
+      testVenue1.Save();
+      Venue testVenue2 = new Venue("Red Rocks Amphitheatre", "Morrison");
+      testVenue2.Save();
+      testVenue1.Delete();
+      List<Venue> resultVenues = Venue.GetAll();
+      List<Venue> testVenueList = new List<Venue> {testVenue2};
+      CollectionAssert.AreEqual(testVenueList, resultVenues);
+    }
+
+    [TestMethod]
+    public void Delete_DeletesOnlyVenue_VenuesList()
+    {
+      Band testBand = new Band("Rilo Kiley");
+      testBand.Save();
+      Venue testVenue = new Venue("Waikiki Shell", "Honolulu");
+      testVenue.Save();
+      testVenue.AddBandToVenueJoinTable(testBand);
+      testVenue.Delete();
+      List<Venue> resultBandVenues = testBand.GetVenues();
+      List<Venue> testBandVenues = new List<Venue> {};
+      CollectionAssert.AreEqual(testBandVenues, resultBandVenues);
+    }
+
+    [TestMethod]
+    public void AddBandToVenueJoinTable_AddsToJoinTable_BandList()
+    {
+      Venue testVenue = new Venue("Waikiki Shell", "Honolulu");
+      testVenue.Save();
+      Band testBand = new Band("Rilo Kiley");
+      testBand.Save();
+      Band testBand2 = new Band("The Beatles");
+      testBand2.Save();
+      testVenue.AddBandToVenueJoinTable(testBand);
+      testVenue.AddBandToVenueJoinTable(testBand2);
+      List<Band> result = testVenue.GetBands();
+      List<Band> testList = new List<Band>{testBand, testBand2};
+      CollectionAssert.AreEqual(testList, result);
+    }
+
+    [TestMethod]
+    public void GetBands_ReturnsAllBandsForVenue_BandList()
+    {
+      Venue testVenue = new Venue("Waikiki Shell", "Honolulu");
+      testVenue.Save();
+      Band testBand1 = new Band("Rilo Kiley");
+      testBand1.Save();
+      Band testBand2 = new Band("The Beatles");
+      testBand2.Save();
+      testVenue.AddBandToVenueJoinTable(testBand1);
+      testVenue.AddBandToVenueJoinTable(testBand2);
+      List<Band> savedBands = testVenue.GetBands();
+      List<Band> testList = new List<Band> {testBand1, testBand2};
+      CollectionAssert.AreEqual(testList, savedBands);
+    }
+
+    [TestMethod]
+    public void DeleteBandFromVenue_DeletesOneBandFromVenueJoinTable_BandList()
+    {
+      Venue testVenue = new Venue("Waikiki Shell", "Honolulu");
+      testVenue.Save();
+      Band testBand1 = new Band("The Beatles");
+      testBand1.Save();
+      Band testBand2 = new Band("Rilo Kiley");
+      testBand2.Save();
+
+      testVenue.AddBandToVenueJoinTable(testBand1);
+      testVenue.AddBandToVenueJoinTable(testBand2);      testVenue.DeleteBandFromVenue(testBand1);
+      List<Band> expectedList = new List<Band> {testBand2};
+      List<Band> actualList = testVenue.GetBands();
+      CollectionAssert.AreEqual(expectedList, actualList);
+    }
 
   }
 }

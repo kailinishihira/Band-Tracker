@@ -16,223 +16,278 @@ namespace BandTracker.Models
       _city = city;
       _id = id;
     }
-   //
-  //   public int GetId()
-  //   {
-  //     return _id;
-  //   }
-   //
-  //   public string GetName()
-  //   {
-  //     return _name;
-  //   }
-   //
-   //
-  //   public override bool Equals(Object otherCategory)
-  //   {
-  //     if (!(otherCategory is Category))
-  //     {
-  //       return false;
-  //     }
-  //     else
-  //     {
-  //       Category newCategory = (Category) otherCategory;
-   //
-  //       bool idEquality = (this.GetId() == newCategory.GetId());
-  //       bool nameEquality = (this.GetName() == newCategory.GetName());
-   //
-   //
-  //       return (idEquality && nameEquality);
-  //     }
-  //   }
-   //
-  //   public override int GetHashCode()
-  //   {
-  //     return this.GetName().GetHashCode();
-  //   }
-   //
-  //   public static List<Category> GetAll()
-  //   {
-  //    List<Category> categoryList = new List<Category> {};
-   //
-  //    MySqlConnection conn = DB.Connection();
-  //    conn.Open();
-   //
-  //    var cmd = conn.CreateCommand() as MySqlCommand;
-  //    cmd.CommandText = @"SELECT * FROM categories;";
-   //
-  //    var rdr = cmd.ExecuteReader() as MySqlDataReader;
-  //    while(rdr.Read())
-  //    {
-  //      int categoryId = rdr.GetInt32(0);
-  //      string name = rdr.GetString(1);
-  //      Category newCategory = new Category(name, categoryId);
-  //      categoryList.Add(newCategory);
-  //    }
-  //    conn.Close();
-  //    return categoryList;
-  //   }
-   //
-  //   public void Save()
-  //   {
-  //     MySqlConnection conn = DB.Connection();
-  //     conn.Open();
-   //
-  //     var cmd = conn.CreateCommand() as MySqlCommand;
-  //     cmd.CommandText = @"INSERT INTO categories (name) VALUES (@name);";
-   //
-  //     MySqlParameter name = new MySqlParameter();
-  //     name.ParameterName = "@name";
-  //     name.Value = this._name;
-  //     cmd.Parameters.Add(name);
-   //
-   //
-  //     cmd.ExecuteNonQuery();
-  //     _id = (int) cmd.LastInsertedId;
-  //     conn.Close();
-  //   }
-   //
-  //   public static Category Find(int id)
-  //   {
-  //     MySqlConnection conn = DB.Connection();
-  //     conn.Open();
-   //
-  //     var cmd = conn.CreateCommand() as MySqlCommand;
-  //     cmd.CommandText = @"SELECT * FROM categories WHERE id = @categoryId;";
-   //
-  //     MySqlParameter searchId = new MySqlParameter();
-  //     searchId.ParameterName = "@categoryId";
-  //     searchId.Value = id;
-  //     cmd.Parameters.Add(searchId);
-   //
-  //     var rdr = cmd.ExecuteReader() as MySqlDataReader;
-   //
-  //     int categoryId = 0;
-  //     string categoryName = "";
-   //
-   //
-  //     while(rdr.Read())
-  //     {
-  //       categoryId = rdr.GetInt32(0);
-  //       categoryName = rdr.GetString(1);
-   //
-  //     }
-  //     Category foundCategory = new Category(categoryName, categoryId);
-  //     conn.Close();
-  //     return foundCategory;
-  //   }
-   //
-  //   public void Update(string newName)
-  //   {
-  //     MySqlConnection conn = DB.Connection();
-  //     conn.Open();
-   //
-  //     var cmd = conn.CreateCommand() as MySqlCommand;
-  //     cmd.CommandText = @"UPDATE categories SET name = @newName WHERE id = @thisId;";
-   //
-  //     MySqlParameter searchId = new MySqlParameter();
-  //     searchId.ParameterName = "@thisId";
-  //     searchId.Value = _id;
-  //     cmd.Parameters.Add(searchId);
-   //
-  //     MySqlParameter name = new MySqlParameter();
-  //     name.ParameterName = "@newName";
-  //     name.Value = newName;
-  //     cmd.Parameters.Add(name);
-   //
-  //     cmd.ExecuteNonQuery();
-  //     conn.Close();
-  //     _name = newName;
-  //   }
-   //
-  //   public void Delete()
-  //   {
-  //     MySqlConnection conn = DB.Connection();
-  //     conn.Open();
-   //
-  //     var cmd = conn.CreateCommand() as MySqlCommand;
-  //     cmd.CommandText = @"DELETE FROM categories WHERE id = @thisId;";
-   //
-  //     MySqlParameter searchId = new MySqlParameter();
-  //     searchId.ParameterName = "@thisId";
-  //     searchId.Value = _id;
-  //     cmd.Parameters.Add(searchId);
-   //
-  //     cmd.ExecuteNonQuery();
-  //     conn.Close();
-  //   }
-   //
-   //
-  //   public static void DeleteAll()
-  //   {
-  //     MySqlConnection conn = DB.Connection();
-  //     conn.Open();
-  //     var cmd = conn.CreateCommand() as MySqlCommand;
-  //     cmd.CommandText = @"DELETE FROM categories;";
-  //     cmd.ExecuteNonQuery();
-  //     conn.Close();
-  //   }
-   //
-  //   public void AddRecipeToCategoryJoinTable(Recipe newCategory)
-  //   {
-  //     MySqlConnection conn = DB.Connection();
-  //     conn.Open();
-  //     var cmd = conn.CreateCommand() as MySqlCommand;
-  //     cmd.CommandText = @"INSERT INTO categories_recipes (recipe_id, category_id) VALUES (@RecipeId, @CategoryId);";
-   //
-  //     MySqlParameter recipe_id_param = new MySqlParameter();
-  //     recipe_id_param.ParameterName = "@RecipeId";
-  //     recipe_id_param.Value = newCategory.GetId();
-  //     cmd.Parameters.Add(recipe_id_param);
-   //
-  //     MySqlParameter category_id_param = new MySqlParameter();
-  //     category_id_param.ParameterName = "@CategoryId";
-  //     category_id_param.Value = _id;
-  //     cmd.Parameters.Add(category_id_param);
-   //
-  //     cmd.ExecuteNonQuery();
-  //     conn.Close();
-  //     if (conn != null)
-  //     {
-  //       conn.Dispose();
-  //     }
-  //   }
-   //
-  //   public List<Recipe> GetRecipes()
-  //   {
-  //    MySqlConnection conn = DB.Connection();
-  //    conn.Open();
-  //    var cmd = conn.CreateCommand() as MySqlCommand;
-  //    cmd.CommandText = @"SELECT recipes.*
-  //      FROM categories
-  //      JOIN categories_recipes ON(categories.id = categories_recipes.category_id)
-  //      JOIN recipes ON(recipes.id = categories_recipes.recipe_id)
-  //      WHERE category_id = @categoryId
-  //      ORDER BY recipes.rating DESC;";
-   //
-  //    MySqlParameter categoryIdParameter = new MySqlParameter();
-  //    categoryIdParameter.ParameterName = "@categoryId";
-  //    categoryIdParameter.Value = _id;
-  //    cmd.Parameters.Add(categoryIdParameter);
-   //
-  //    var rdr = cmd.ExecuteReader() as MySqlDataReader;
-  //    List<Recipe> allRecipes = new List<Recipe> {};
-  //      while(rdr.Read())
-  //      {
-  //        int thisRecipeId = rdr.GetInt32(0);
-  //        string recipeName = rdr.GetString(1);
-  //        string recipeInstructions = rdr.GetString(2);
-  //        int recipeRating = rdr.GetInt32(3);
-  //        Recipe foundRecipe = new Recipe(recipeName, recipeInstructions, recipeRating, thisRecipeId);
-  //        allRecipes.Add(foundRecipe);
-  //      }
-  //    conn.Close();
-  //    if (conn != null)
-  //    {
-  //      conn.Dispose();
-  //    }
-  //    return allRecipes;
-  //  }
-   //
+
+    public int GetId()
+    {
+      return _id;
+    }
+
+    public string GetName()
+    {
+      return _name;
+    }
+
+    public string GetCity()
+    {
+      return _city;
+    }
+
+    public override bool Equals(Object otherVenue)
+    {
+      if (!(otherVenue is Venue))
+      {
+        return false;
+      }
+      else
+      {
+        Venue newVenue = (Venue) otherVenue;
+        bool idEquality = (this.GetId() == newVenue.GetId());
+        bool nameEquality = (this.GetName() == newVenue.GetName());
+        bool cityEquality = (this.GetCity() == newVenue.GetCity());
+        return (idEquality && nameEquality && cityEquality);
+      }
+    }
+
+    public override int GetHashCode()
+    {
+      return this.GetName().GetHashCode();
+    }
+
+    public static List<Venue> GetAll()
+    {
+     List<Venue> venueList = new List<Venue> {};
+
+     MySqlConnection conn = DB.Connection();
+     conn.Open();
+
+     var cmd = conn.CreateCommand() as MySqlCommand;
+     cmd.CommandText = @"SELECT * FROM venues ORDER BY name ASC;";
+
+     var rdr = cmd.ExecuteReader() as MySqlDataReader;
+     while(rdr.Read())
+     {
+       int venueId = rdr.GetInt32(0);
+       string name = rdr.GetString(1);
+       string city = rdr.GetString(2);
+       Venue newVenue = new Venue(name, city, venueId);
+       venueList.Add(newVenue);
+     }
+     conn.Close();
+     return venueList;
+    }
+
+    public void Save()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO venues  (name, city) VALUES (@name, @city);";
+      MySqlParameter nameParameter = new MySqlParameter();
+      nameParameter.ParameterName = "@name";
+      nameParameter.Value = this._name;
+      cmd.Parameters.Add(nameParameter);
+
+      MySqlParameter cityParameter = new MySqlParameter();
+      cityParameter.ParameterName = "@city";
+      cityParameter.Value = this._city;
+      cmd.Parameters.Add(cityParameter);
+
+      cmd.ExecuteNonQuery();
+      _id = (int) cmd.LastInsertedId;
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+    }
+
+    public static Venue Find(int id)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM venues WHERE id = @venueId;";
+
+      MySqlParameter searchId = new MySqlParameter();
+      searchId.ParameterName = "@venueId";
+      searchId.Value = id;
+      cmd.Parameters.Add(searchId);
+
+      var rdr = cmd.ExecuteReader() as MySqlDataReader;
+
+      int venueId = 0;
+      string venueName = "";
+      string venueCity = "";
+
+      while(rdr.Read())
+      {
+        venueId = rdr.GetInt32(0);
+        venueName = rdr.GetString(1);
+        venueCity = rdr.GetString(2);
+      }
+      Venue foundVenue = new Venue(venueName, venueCity, venueId);
+      conn.Close();
+      return foundVenue;
+    }
+
+    public void UpdateName(string newName)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"UPDATE venues SET name = @newName WHERE id = @thisId;";
+
+      MySqlParameter searchId = new MySqlParameter();
+      searchId.ParameterName = "@thisId";
+      searchId.Value = _id;
+      cmd.Parameters.Add(searchId);
+
+      MySqlParameter name = new MySqlParameter();
+      name.ParameterName = "@newName";
+      name.Value = newName;
+      cmd.Parameters.Add(name);
+
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      _name = newName;
+    }
+
+    public void UpdateCity(string newCity)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"UPDATE venues SET city = @newCity WHERE id = @thisId;";
+
+      MySqlParameter searchId = new MySqlParameter();
+      searchId.ParameterName = "@thisId";
+      searchId.Value = _id;
+      cmd.Parameters.Add(searchId);
+
+      MySqlParameter city = new MySqlParameter();
+      city.ParameterName = "@newCity";
+      city.Value = newCity;
+      cmd.Parameters.Add(city);
+
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      _city = newCity;
+    }
+
+    public void Delete()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"DELETE FROM venues WHERE id = @thisId;";
+
+      MySqlParameter searchId = new MySqlParameter();
+      searchId.ParameterName = "@thisId";
+      searchId.Value = _id;
+      cmd.Parameters.Add(searchId);
+
+      cmd.ExecuteNonQuery();
+      conn.Close();
+    }
+
+    public static void DeleteAll()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"DELETE FROM venues;";
+      cmd.ExecuteNonQuery();
+      conn.Close();
+    }
+
+    public void AddBandToVenueJoinTable(Band newBand)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO bands_venues (band_id, venue_id) VALUES (@BandId, @VenueId);";
+
+      MySqlParameter bandId = new MySqlParameter();
+      bandId.ParameterName = "@BandId";
+      bandId.Value = newBand.GetId();
+      cmd.Parameters.Add(bandId);
+
+      MySqlParameter venueId = new MySqlParameter();
+      venueId.ParameterName = "@VenueId";
+      venueId.Value = _id;
+      cmd.Parameters.Add(venueId);
+
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+    }
+
+    public List<Band> GetBands()
+    {
+     MySqlConnection conn = DB.Connection();
+     conn.Open();
+     var cmd = conn.CreateCommand() as MySqlCommand;
+     cmd.CommandText = @"SELECT bands.*
+       FROM venues
+       JOIN bands_venues ON(venues.id = bands_venues.venue_id)
+       JOIN bands ON(bands.id = bands_venues.band_id)
+       WHERE venue_id = @venueId
+       ORDER BY bands.name ASC;";
+
+     MySqlParameter venueIdParameter = new MySqlParameter();
+     venueIdParameter.ParameterName = "@venueId";
+     venueIdParameter.Value = _id;
+     cmd.Parameters.Add(venueIdParameter);
+
+     var rdr = cmd.ExecuteReader() as MySqlDataReader;
+     List<Band> allBands = new List<Band> {};
+       while(rdr.Read())
+       {
+         int bandId = rdr.GetInt32(0);
+         string bandName = rdr.GetString(1);
+         Band foundBand = new Band(bandName, bandId);
+         allBands.Add(foundBand);
+       }
+     conn.Close();
+     if (conn != null)
+     {
+       conn.Dispose();
+     }
+     return allBands;
+   }
+
+   public void DeleteBandFromVenue(Band newBand)
+   {
+     MySqlConnection conn = DB.Connection();
+     conn.Open();
+
+     var cmd = conn.CreateCommand() as MySqlCommand;
+     cmd.CommandText = @"DELETE FROM bands_venues WHERE band_id = @BandId AND venue_id = @VenueId;";
+
+     MySqlParameter venueId = new MySqlParameter();
+     venueId.ParameterName = "@VenueId";
+     venueId.Value = _id;
+     cmd.Parameters.Add(venueId);
+
+     MySqlParameter bandId = new MySqlParameter();
+     bandId.ParameterName = "@BandId";
+     bandId.Value = newBand.GetId();
+     cmd.Parameters.Add(bandId);
+
+     cmd.ExecuteNonQuery();
+     conn.Close();
+     if (conn != null)
+     {
+       conn.Dispose();
+     }
+   }
   }
 }
