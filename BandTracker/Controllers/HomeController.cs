@@ -102,7 +102,7 @@ namespace BandTracker.Controllers
     {
       Band thisBand = Band.Find(id);
       List<Venue> bandVenues = thisBand.GetVenues();
-      Venue allVenues = Venue.GetAll();
+      List<Venue> allVenues = Venue.GetAll();
 
       Dictionary<string, object> model = new Dictionary<string, object>();
       model.Add("thisBand", thisBand);
@@ -111,5 +111,37 @@ namespace BandTracker.Controllers
       return View(model);
     }
 
+    [HttpPost("/bands/select_venue")]
+    public ActionResult SelectVenue()
+    {
+      Band thisBand = Band.Find(int.Parse(Request.Form["band-id"]));
+      Venue thisVenue = Venue.Find(int.Parse(Request.Form["venue-id"]));
+      thisBand.AddVenueToBandJoinTable(thisVenue);
+      List<Venue> bandVenues = thisBand.GetVenues();
+      List<Venue> allVenues = Venue.GetAll();
+
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      model.Add("thisBand", thisBand);
+      model.Add("bandVenues", bandVenues);
+      model.Add("allVenues", allVenues);
+      return View("BandDetails", model);
+    }
+
+    [HttpPost("/bands/new_venue")]
+    public ActionResult AddVenueToBand()
+    {
+      Band thisBand = Band.Find(int.Parse(Request.Form["band-id"]));
+      Venue newVenue = new Venue(Request.Form["venue-name"], Request.Form["venue-city"]);
+      newVenue.Save();
+      thisBand.AddVenueToBandJoinTable(newVenue);
+      List<Venue> bandVenues = thisBand.GetVenues();
+      List<Venue> allVenues = Venue.GetAll();
+
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      model.Add("thisBand", thisBand);
+      model.Add("bandVenues", bandVenues);
+      model.Add("allVenues", allVenues);
+      return View("BandDetails", model);
+    }
   }
 }
