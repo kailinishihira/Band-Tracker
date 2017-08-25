@@ -55,6 +55,6 @@ _A web app which will enable the user to enter venues and bands. The user may vi
 
 ### License
 
-Copyright (c) 2017 **_Kaili Nishihira**
+Copyright (c) 2017 **_Kaili Nishihira_**
 
 *Licensed under the [MIT License](https://opensource.org/licenses/MIT)*
