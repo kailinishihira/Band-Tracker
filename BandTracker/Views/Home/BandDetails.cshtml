@@ -33,5 +33,5 @@
 
 @foreach(var venue in @Model["bandVenues"])
 {
-  <li>@venue.GetName()</li>
+  <li><a href="/venues/@venue.GetId()/details">@venue.GetName()</a></li>
 }

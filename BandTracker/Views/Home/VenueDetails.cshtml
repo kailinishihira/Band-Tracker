@@ -8,6 +8,7 @@
 
 <h2>@Model["thisVenue"].GetName()</h2>
 <h4>@Model["thisVenue"].GetCity()</h4>
+<a href="/venues/@Model["thisVenue"].GetId()/edit">Edit</a>
 
 <h2>Hosted Bands</h2>
 <h4>Add a band who has performed here</h4>
@@ -32,5 +33,5 @@
 
 @foreach (var band in @Model["venueBands"])
 {
-  <li>@band.GetName()</li>
+  <li><a href="/bands/@band.GetId()/details">@band.GetName()</a></li>
 }
