@@ -4,6 +4,9 @@
 
 <a href="/"> <span class="glyphicon glyphicon-home home" aria-hidden="true"></span> </a>
 
+| <a href="/bands/all">Bands</a> | <a href="/venues/all">Venues</a>
+
+
 <h1>Band Tracker</h1>
 
 <div class="row">
@@ -26,9 +29,13 @@
     <div class="well">
       <form action="/venues/all/add" method="post">
         <label for="venue-name">Venue name: </label>
+        <br>
         <input type="text" id="venue-name" name="venue-name">
+        <br>
         <label for="venue-city">Venue city: </label>
+        <br>
         <input type="text" id="venue-city" name="venue-city">
+        <br>
         <button type="submit" class="btn btn-default">Add venue</button>
       </form>
     </div>
