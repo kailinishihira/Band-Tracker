@@ -12,33 +12,41 @@
 <a href="/venues/@Model["thisVenue"].GetId()/delete">Delete</a>
 
 <div class="row">
-  <div class="col-md-6">
-    <h2>Bands Hosted</h2>
-    @foreach (var band in @Model["venueBands"])
-    {
-      <li><a href="/bands/@band.GetId()/details">@band.GetName()</a> <a href="/venues/@Model["thisVenue"].GetId()/delete/@band.GetId()" class="delete"> x </a></li>
-    }
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-5">
+    <h3>Bands Hosted</h3>
+    <div class="well">
+      @foreach (var band in @Model["venueBands"])
+      {
+        <li><a href="/bands/@band.GetId()/details">@band.GetName()</a> <a href="/venues/@Model["thisVenue"].GetId()/delete/@band.GetId()" class="delete"> x </a></li>
+      }
+    </div>
   </div>
 
-  <div class="col-md-6">
-    <h2>Add a band who has performed at @Model["thisVenue"].GetName()</h2>
-    <form action='/venues/select_band' method='post'>
-      <input id='venue-id' name='venue-id' type='hidden' value='@Model["thisVenue"].GetId()'>
-      <label for='band-id'>Select a band</label>
-      <select id='band-id' name='band-id' type='text'>
-        @foreach (var band in @Model["allBands"])
-        {
-          <option value='@band.GetId()'>@band.GetName()</option>
-        }
-      </select>
-      <button type="submit" class="btn btn-default">Add</button>
-    </form>
+  <div class="col-md-5">
+    <h3>Add a band who has performed at @Model["thisVenue"].GetName()</h3>
+    <div class="well">
+      <form action='/venues/select_band' method='post'>
+        <input id='venue-id' name='venue-id' type='hidden' value='@Model["thisVenue"].GetId()'>
+        <label for='band-id'>Select a band</label>
+        <select id='band-id' name='band-id' type='text'>
+          @foreach (var band in @Model["allBands"])
+          {
+            <option value='@band.GetId()'>@band.GetName()</option>
+          }
+        </select>
+        <button type="submit" class="btn btn-default">Add</button>
+      </form>
 
-    <form action='/venues/new_band' method='post'>
-      <input id='venue-id' name='venue-id' type='hidden' value='@Model["thisVenue"].GetId()'>
-      <label for="band-name">New band: </label>
-      <input type="text" id="band-name" name="band-name">
-      <button type="submit" class="btn btn-default">Add</button>
-    </form>
+      <form action='/venues/new_band' method='post'>
+        <input id='venue-id' name='venue-id' type='hidden' value='@Model["thisVenue"].GetId()'>
+        <label for="band-name">New band: </label>
+        <input type="text" id="band-name" name="band-name">
+        <button type="submit" class="btn btn-default">Add</button>
+      </form>
+    </div>
+  </div>
+  <div class="col-md-1">
   </div>
 </div>
